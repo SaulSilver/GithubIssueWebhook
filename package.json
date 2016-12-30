@@ -1,0 +1,31 @@
+{
+  "name": "exam3",
+  "version": "1.0.0",
+  "description": "Examination 3 for Web Server-side course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv523/hh222ix-examination-3.git"
+  },
+  "keywords": [
+    "Javascript",
+    "node",
+    "express",
+    "hooks",
+    "realtimeApp"
+  ],
+  "author": "Hatem Houssein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1dv523/hh222ix-examination-3/issues"
+  },
+  "homepage": "https://github.com/1dv523/hh222ix-examination-3#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.7.2"
+  }
+}
