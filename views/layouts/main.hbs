@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Github Issues from Repo</title>
+</head>
+<body>
+<h1>Real-Time GitHub Issues</h1>
+{{{body}}}
+
+<script src='/socket.io/socket.io.js'></script>
+<script>
+    let socket = io.connect();
+
+    socket.on('connected', function (data) {
+        console.log(data);
+    });
+</script>
+
+</body>
+</html>
