@@ -23,7 +23,7 @@ app.engine('.hbs', exphbs({
 }));
 app.set('view engine', '.hbs');
 
-//Add support for handling HTML form data ------------------------
+//Add supporting for handling HTML form data ------------------------
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routing ----------------------------------------------------
@@ -31,7 +31,7 @@ app.use('/', require('./routes/githubConnect.js'));
 
 //Start listening to the port ----------------------
 let server = app.listen(port, () =>
-    console.log('Express is up on http://ha.hahatemhub.cf/')
+    console.log('Express is up on http://hatemgithub.tk/')
 );
 
 // Creating web socket on server side ------------------------
