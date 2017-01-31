@@ -13,8 +13,8 @@
     let socket = io.connect();
 
     socket.on('webhook', function (data) {
-
-        console.log(data);
+        let payload = JSON.parse(data);
+        console.log(payload);
     });
 </script>
 
