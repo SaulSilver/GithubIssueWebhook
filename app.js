@@ -41,9 +41,8 @@ app.post('/hookie', function (req, res) {
     res.status(200);
     res.send();
 
+    //TODO: Think about what kind of data is received (different possibilites)
     let jsonObj = req.body.action;
-
-    // let actionobj = jsonObj['x-github-event'];
 
     console.log(jsonObj);
 

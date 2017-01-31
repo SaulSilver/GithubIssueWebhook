@@ -13,6 +13,7 @@
     let socket = io.connect();
 
     socket.on('webhook', function (data) {
+        //TODO: make the html for the data received, update the existing issues html
         let jsonObj = data;
         console.log(jsonObj);
     });
