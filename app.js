@@ -22,6 +22,7 @@ app.set('view engine', '.hbs');
 
 //Add supporting for handling HTML form data ------------------------
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //Routing ----------------------------------------------------
 app.use('/', require('./routes/githubConnect.js'));
