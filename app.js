@@ -43,8 +43,8 @@ io.on('connection', function(socket) {
 app.post('/github', function (req, res) {
     res.status(200);
     res.send();
-    console.log('request: \n' + req);
-    console.log('response: \n' + res);
-
-    io.emit('webhook', 'wenhook succeeded' + req + res);
+    // console.log('request: \n' + req);
+    // console.log('response: \n' + res);
+    //
+    // io.emit('webhook', 'wenhook succeeded' + req + res);
 });
