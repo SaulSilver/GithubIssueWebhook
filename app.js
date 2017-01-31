@@ -46,7 +46,7 @@ app.post('/hookie', function (req, res) {
     res.status(200);
     res.send();
 
-    req = JSON.parse(req);
+    req = JSON.stringify(req);
     res = JSON.stringify(res);
     io.emit('webhook', 'wenhook succeeded' + req + res);
 });
