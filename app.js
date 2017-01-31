@@ -48,5 +48,5 @@ app.post('/hookie', function (req, res) {
     // console.log('request: \n' + req);
     // console.log('response: \n' + res);
     //
-    // io.emit('webhook', 'wenhook succeeded' + req + res);
+    io.emit('webhook', 'wenhook succeeded' + req + res);
 });
