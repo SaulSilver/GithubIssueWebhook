@@ -42,6 +42,7 @@ io.on('connection', function(socket) {
 
 //Listening to webhooks
 app.post('/hookie', function (req, res) {
+    console.log('we are here');
     res.status(200);
     res.send();
     // console.log('request: \n' + req);
