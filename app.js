@@ -35,19 +35,16 @@ let server = app.listen(port, () =>
 // Creating web socket on server side ------------------------
 let io = require('socket.io')(server);
 
-io.on('connection', function(socket) {
-    socket.emit('connected', 'world');
-    console.log('yoooo');
-});
-
 //Listening to webhooks
 app.post('/hookie', function (req, res) {
     console.log('we are here');
     res.status(200);
     res.send();
 
-    console.log('request: \n' + req);
+    let eventPayload = res['X-GitHub-Event'];
+    console.log('request: \n' + eventPayload);
     console.log('response: \n' + res);
 
-    io.emit('webhook', 'wenhook succeeded' + req + res);
+    //triggering off the client to update on receiving from Github
+    io.emit('webhook', 'wenhook succeeded' + eventPayload + res);
 });
