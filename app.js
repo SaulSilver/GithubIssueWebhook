@@ -45,18 +45,7 @@ app.post('/hookie', function (req, res) {
     console.log('request: \n' + eventPayload);
     console.log('response: \n' + res);
 
-    let context = {
-        issues: resp.map(function (issue) {
-            return {
-                title: issue.title,
-                issueBody: issue.body,
-                comments: issue.comments,
-                issueUrl: issue.url,
-                created_at: issue.created_at,
-                updated_at: issue.updated_at
-            }
-        })
-    };
+
 
     //triggering off the client to update on receiving from Github
     io.emit('webhook', 'webhook succeeded: ' + eventPayload);
