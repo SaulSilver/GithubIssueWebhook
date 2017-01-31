@@ -41,6 +41,8 @@ io.on('connection', function(socket) {
 
 //Listening to webhooks
 app.post('/github', function (req, res) {
+    res.status(200);
+    res.send();
     console.log('request: \n' + req);
     console.log('response: \n' + res);
 

@@ -4,12 +4,12 @@
         <ul>
             {{#each issues}}
                 <!--For each snippet in the array -->
-            <li> {{title}}  <br>
-                {{issueBody}}   <br>
-                {{comments}}    <br>
-                {{issueUrl}}    <br>
-                {{created_at}}   <br>
-                {{updated_at}}   <br>
+            <li> Title: {{title}}  <br>
+                Body: {{issueBody}}   <br>
+                Comments: {{comments}}    <br>
+                URL: {{issueUrl}}    <br>
+                Created at: {{created_at}}   <br>
+                Updated at: {{updated_at}}   <br>
             {{/each}}
         </ul>
     {{else}}
