@@ -41,12 +41,12 @@ app.post('/hookie', function (req, res) {
     res.status(200);
     res.send();
 
-    let jsonObj = req;
+    let jsonObj = res;
 
     let actionobj = jsonObj['action'];
 
-    console.log(jsonObj + '\n \n' + actionobj);
+    console.log(jsonObj);
 
     //triggering off the client to update on receiving from Github
-    io.emit('webhook', 'webhook succeeded: ' + actionobj);
+    io.emit('webhook', 'webhook succeeded: ' + jsonObj);
 });
