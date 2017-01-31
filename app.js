@@ -35,7 +35,7 @@ let server = app.listen(port, () =>
 let io = require('socket.io')(server);
 
 io.on('connection', function(socket) {
-    io.emit('connected', 'world');
+    socket.emit('connected', 'world');
     console.log('yoooo');
 });
 
