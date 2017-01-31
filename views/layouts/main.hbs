@@ -13,7 +13,7 @@
     let socket = io.connect();
 
     socket.on('webhook', function (data) {
-        let jsonObj = data;
+        let jsonObj = data.message;
         console.log(jsonObj);
     });
 </script>
