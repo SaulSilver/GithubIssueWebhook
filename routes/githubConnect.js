@@ -1,5 +1,6 @@
 /**
  * Created by hatem on 2017-01-19.
+ * Connect to my Github repo and retrieves all the issues and extra features
  */
 "use strict";
 

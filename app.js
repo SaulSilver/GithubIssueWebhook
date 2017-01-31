@@ -13,9 +13,6 @@ const exphbs = require('express-handlebars');
 
 const port = process.env.PORT || 8000;
 
-//Static files ------------------------
-app.use(express.static(path.join(__dirname, 'public')));
-
 //View engine ------------------------
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -31,7 +28,7 @@ app.use('/', require('./routes/githubConnect.js'));
 
 //Start listening to the port ----------------------
 let server = app.listen(port, () =>
-    console.log('Express is up on http://hatemgithub.tk/')
+    console.log('Express is up on https://hatemgithub.tk/')
 );
 
 // Creating web socket on server side ------------------------
@@ -42,6 +39,8 @@ io.on('connection', function(socket) {
     console.log('yoooo');
 });
 
+//Listening to webhooks
 app.post('/github', function (req, res) {
-    console.log(res);
+    console.log('request: \n' + req);
+    console.log('response: \n' + res);
 });
