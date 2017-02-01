@@ -27,6 +27,10 @@ app.use(bodyParser.json());
 //Routing ----------------------------------------------------
 app.use('/', require('./routes/githubConnect.js'));
 
+
+//Static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 //Start listening to the port ----------------------
 let server = app.listen(port, () =>
     console.log('Express is up on https://hatemgithub.tk/')
