@@ -31,10 +31,6 @@ function createNotification(notification, typeOfAction) {
         + 'Title: ' + notification.title + '<br/>'
         + 'User: ' + notification.user + '<br/>';
 
-    //In case of Comment notification, it includes the body text of the comment
-    if (typeOfAction === 'comment')
-        text += 'Text: ' + notification.text + '<br/>';
-
     let  li = document.createElement('li');
     li.innerHTML = text;
     ul.appendChild(li);
@@ -42,7 +38,7 @@ function createNotification(notification, typeOfAction) {
 
 function renderIssues(issue) {
     let context = {
-        issues: resp.map(function (issue) {
+        issues: issue.map(function (issue) {
             return {
                 title: issue.title,
                 issueBody: issue.body,
@@ -53,4 +49,5 @@ function renderIssues(issue) {
             }
         })
     };
+    document.render('home/index.hbs', context);
 }
