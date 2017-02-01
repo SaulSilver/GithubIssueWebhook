@@ -25,6 +25,12 @@
         console.log('issue');
         //TODO: make the html for the data received, update the existing issues html
         createNotification(data, 'issue');
+
+        io.emit('received');
+    });
+
+    socket.on('issue body', function(data) {
+        console.log('issue body received');
     });
 
     socket.on('comment webhook', function (data) {
