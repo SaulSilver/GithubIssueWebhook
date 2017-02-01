@@ -62,6 +62,7 @@ app.post('/hookie', function (req, res) {
     }
 
     io.on('received', function(data) {
+        console.log('received');
         io.emit('issue body', req.body);
     });
 });
