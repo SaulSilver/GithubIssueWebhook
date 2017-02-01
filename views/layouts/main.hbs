@@ -24,6 +24,7 @@
     socket.on('issue webhook', function (data) {
         console.log('issue');
         //TODO: make the html for the data received, update the existing issues html
+        createNotification(data, 'issue');
         let jsonObj = data;
         console.log(jsonObj);
     });
@@ -31,10 +32,24 @@
     socket.on('comment webhook', function (data) {
         console.log('notification');
         //TODO: make the html for the data received, update the existing issues html
-        let jsonObj = data;
+        createNotification(data, 'comment');
 
         console.log(jsonObj);
     });
+
+    function createNotification(notification, typeOfAction) {
+        let ul = document.getElementById('notification_div').firstElementChild;
+
+        let br = document.createElement('br'),
+                text = document.createTextNode('Action: ' + notification.action + typeOfAction + br
+                                            + 'Title: ' + notification.title + br
+                                            + 'User: ' + notification.user + br
+                                            + 'Text: ' + notification.text + br);
+
+        let  li = document.createElement('li').appendChild(text);
+        ul.appendChild(li);
+    }
+
 </script>
 
 </body>
