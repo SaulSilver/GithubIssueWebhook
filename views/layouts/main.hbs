@@ -25,17 +25,15 @@
         console.log('issue');
         //TODO: make the html for the data received, update the existing issues html
         createNotification(data, 'issue');
-        let jsonObj = data;
-        console.log(jsonObj);
     });
 
     socket.on('comment webhook', function (data) {
         console.log('notification');
         //TODO: make the html for the data received, update the existing issues html
         createNotification(data, 'comment');
-
     });
 
+    //Create the notification html
     function createNotification(notification, typeOfAction) {
         let ul = document.getElementById('notification_ul');
 
