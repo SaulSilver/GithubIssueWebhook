@@ -37,17 +37,11 @@ function createNotification(notification, typeOfAction) {
 }
 
 function renderIssues(issue) {
-    let context = {
-        issues: issue.map(function (issue) {
-            return {
-                title: issue.title,
-                issueBody: issue.body,
-                comments: issue.comments,
-                issueUrl: issue.url,
-                created_at: issue.created_at,
-                updated_at: issue.updated_at
-            }
-        })
-    };
-    document.render('home/index.hbs', context);
+    let ul = document.getElementById('issues_ul');
+
+    let context = 'Title: ' + issue['title'];
+
+    let  li = document.createElement('li');
+    li.innerHTML = context;
+    ul.appendChild(li);
 }
