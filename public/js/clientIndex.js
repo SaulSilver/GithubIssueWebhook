@@ -39,9 +39,9 @@ function createNotification(notification, typeOfAction) {
 }
 
 function renderIssues(issue) {
-    let li = document.getElementById(issue.issue.id);
-    console.log(issue.issue.id);
-    let context = 'Title: ' + issue.issue.title;
+    let li = document.getElementById(issue.id);
+    console.log(issue.id);
+    let context = 'Title: ' + issue.title;
 
     li.innerHTML = context;
     ul.appendChild(li);
