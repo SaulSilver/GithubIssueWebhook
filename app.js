@@ -42,7 +42,8 @@ app.post('/hookie', function (req, res) {
     res.send();
 
     //TODO: Think about what kind of data is received (different possibilites)
-    let jsonObj = req.body.action;
+    //action, title, user for the notification
+    let jsonObj = req.body;
 
     console.log(jsonObj);
 
