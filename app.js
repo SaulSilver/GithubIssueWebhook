@@ -56,13 +56,10 @@ app.post('/hookie', function (req, res) {
     //Check whether the changed is a comment or an issue
     if(xGithubEvent === 'issues') {
         io.emit('issue webhook', notification);
+        io.emit('issue body', req.body);
     } else if (xGithubEvent === 'issue_comment') {
         notification.body = req.body.comment.body;
         io.emit('comment webhook', notification);
     }
 
-    io.on('received', function(data) {
-        console.log('received');
-        io.emit('issue body', req.body);
-    });
 });
