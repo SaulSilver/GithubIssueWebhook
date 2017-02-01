@@ -61,13 +61,13 @@ app.post('/hookie', function (req, res) {
     if(xGithubEvent === 'issues') {
 
         let context = {
-                    id: req.body.id,
-                    title: req.body.title,
-                    issueBody: req.body.body,
-                    comments: req.body.comments,
-                    issueUrl: req.body.url,
-                    created_at: req.body.created_at,
-                    updated_at: req.body.updated_at
+                    id: req.body.issue.id,
+                    title: req.body.issue.title,
+                    issueBody: req.body.issue.body,
+                    comments: req.body.issue.comments,
+                    issueUrl: req.body.issue.url,
+                    created_at: req.body.issue.created_at,
+                    updated_at: req.body.issue.updated_at
         };
 console.log(context);
         io.emit('issue webhook', notification);
