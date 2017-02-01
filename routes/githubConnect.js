@@ -26,6 +26,7 @@ router.route('/')
                 let context = {
                     issues: resp.map(function (issue) {
                         return {
+                            id: issue.id,
                             title: issue.title,
                             issueBody: issue.body,
                             comments: issue.comments,

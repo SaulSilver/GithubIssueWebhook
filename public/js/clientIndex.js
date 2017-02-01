@@ -5,6 +5,7 @@
 
 let socket = io.connect();
 
+//Notification for issue
 socket.on('issue webhook', function (data) {
     console.log('issue');
     //TODO: make the html for the data received, update the existing issues html
@@ -12,11 +13,13 @@ socket.on('issue webhook', function (data) {
 
 });
 
+//Create the issue on the page
 socket.on('issue body', function(data) {
-    console.log('issue body received');
+    console.log(data);
     renderIssues(data);
 });
 
+//Notification for a comment
 socket.on('comment webhook', function (data) {
     console.log('notification');
     //TODO: make the html for the data received, update the existing issues html
