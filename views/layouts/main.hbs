@@ -10,9 +10,9 @@
 {{{body}}}
 
 <!-- Notifications part -->
-<div id="notification_div">
+<div>
     <h3>Notifications</h3>
-    <ul>
+    <ul id="notification_ul">
 
     </ul>
 </div>
@@ -37,9 +37,9 @@
     });
 
     function createNotification(notification, typeOfAction) {
-        let ul = document.getElementById('notification_div').firstElementChild;
+        let ul = document.getElementById('notification_ul');
 
-        let text = document.createTextNode('Action: ' + notification.action + ' ' + typeOfAction + '<br>'
+        let text = document.createTextNode('Action: ' + notification.action + ' ' + typeOfAction + '\n'
                                             + 'Title: ' + notification.title + '<br>'
                                             + 'User: ' + notification.user + '<br>'
                                             + 'Text: ' + notification.text + '<br>');
