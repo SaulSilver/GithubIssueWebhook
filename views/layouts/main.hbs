@@ -6,56 +6,13 @@
 </head>
 <body>
 <h1>Real-Time GitHub Issues</h1>
-<!-- Issues part -->
+
 {{{body}}}
 
-<!-- Notifications part -->
-<div>
-    <h3>Notifications</h3>
-    <ul id="notification_ul">
 
-    </ul>
-</div>
 
 <script src='/socket.io/socket.io.js'></script>
-<script>
-    let socket = io.connect();
-
-    socket.on('issue webhook', function (data) {
-        console.log('issue');
-        //TODO: make the html for the data received, update the existing issues html
-        createNotification(data, 'issue');
-
-    });
-
-    socket.on('issue body', function(data) {
-        console.log('issue body received');
-    });
-
-    socket.on('comment webhook', function (data) {
-        console.log('notification');
-        //TODO: make the html for the data received, update the existing issues html
-        createNotification(data, 'comment');
-    });
-
-    //Create the notification html
-    function createNotification(notification, typeOfAction) {
-        let ul = document.getElementById('notification_ul');
-
-        let text = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
-                                            + 'Title: ' + notification.title + '<br/>'
-                                            + 'User: ' + notification.user + '<br/>';
-
-        //In case of Comment notification, it includes the body text of the comment
-        if (typeOfAction === 'comment')
-            text += 'Text: ' + notification.text + '<br/>';
-
-        let  li = document.createElement('li');
-        li.innerHTML = text;
-        ul.appendChild(li);
-    }
-
-</script>
+<script src="/hh222ix-examination-3/public/js/clientIndex.js"></script>
 
 </body>
 </html>

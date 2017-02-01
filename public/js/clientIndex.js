@@ -3,8 +3,54 @@
  */
 "use strict";
 
-let socket = require('socket.io');
+let socket = io.connect();
 
-socket.on('receive', function(data) {
-   console.log(data);
+socket.on('issue webhook', function (data) {
+    console.log('issue');
+    //TODO: make the html for the data received, update the existing issues html
+    createNotification(data, 'issue');
+
 });
+
+socket.on('issue body', function(data) {
+    console.log('issue body received');
+    renderIssues(data);
+});
+
+socket.on('comment webhook', function (data) {
+    console.log('notification');
+    //TODO: make the html for the data received, update the existing issues html
+    createNotification(data, 'comment');
+});
+
+//Create the notification html
+function createNotification(notification, typeOfAction) {
+    let ul = document.getElementById('notification_ul');
+
+    let text = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
+        + 'Title: ' + notification.title + '<br/>'
+        + 'User: ' + notification.user + '<br/>';
+
+    //In case of Comment notification, it includes the body text of the comment
+    if (typeOfAction === 'comment')
+        text += 'Text: ' + notification.text + '<br/>';
+
+    let  li = document.createElement('li');
+    li.innerHTML = text;
+    ul.appendChild(li);
+}
+
+function renderIssues(issue) {
+    let context = {
+        issues: resp.map(function (issue) {
+            return {
+                title: issue.title,
+                issueBody: issue.body,
+                comments: issue.comments,
+                issueUrl: issue.url,
+                created_at: issue.created_at,
+                updated_at: issue.updated_at
+            }
+        })
+    };
+}
