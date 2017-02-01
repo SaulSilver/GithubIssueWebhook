@@ -44,18 +44,20 @@ app.post('/hookie', function (req, res) {
     //TODO: Think about what kind of data is received (different possibilites)
     //type, action, title, user for the notification
 
-    let xGithubEvent = req.headers['x-github-event'];
-    let action = req.body.action;
-    let user = req.body.issue.user.login;
+    let notification = {
+        xGithubEvent: req.headers['x-github-event'],
+        action: req.body.action,
+        user: req.body.issue.user.login,
+        title: req.body.issue.title
+    };
 
+    //triggering off the client to update on receiving from Github
     //Check whether the changed is a comment or an issue
     if(xGithubEvent === 'issues') {
-
+        io.emit('issue webhook', notification + '\n' + req.body);
     } else if (xGithubEvent === 'issue_comment') {
-
+        io.emit('notification webhook', notification);
     }
     console.log(user);
 
-    //triggering off the client to update on receiving from Github
-    io.emit('webhook', user);
 });

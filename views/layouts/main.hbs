@@ -6,15 +6,31 @@
 </head>
 <body>
 <h1>Real-Time GitHub Issues</h1>
+<!-- Issues part -->
 {{{body}}}
+
+<!-- Notifications part -->
+<div id="notification_div">
+    <h3>Notifications</h3>
+    <ul>
+
+    </ul>
+</div>
 
 <script src='/socket.io/socket.io.js'></script>
 <script>
     let socket = io.connect();
 
-    socket.on('webhook', function (data) {
+    socket.on('issue webhook', function (data) {
         //TODO: make the html for the data received, update the existing issues html
         let jsonObj = data;
+        console.log(jsonObj);
+    });
+
+    socket.on('notification webhook', function (data) {
+        //TODO: make the html for the data received, update the existing issues html
+        let jsonObj = data;
+
         console.log(jsonObj);
     });
 </script>
