@@ -69,7 +69,7 @@ app.post('/hookie', function (req, res) {
                     created_at: req.body.created_at,
                     updated_at: req.body.updated_at
         };
-
+console.log(context);
         io.emit('issue webhook', notification);
         io.emit('issue body', context);
     } else if (xGithubEvent === 'issue_comment') {
