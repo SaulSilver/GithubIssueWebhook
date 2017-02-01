@@ -22,12 +22,14 @@
     let socket = io.connect();
 
     socket.on('issue webhook', function (data) {
+        console.log('issue');
         //TODO: make the html for the data received, update the existing issues html
         let jsonObj = data;
         console.log(jsonObj);
     });
 
-    socket.on('notification webhook', function (data) {
+    socket.on('comment webhook', function (data) {
+        console.log('notification');
         //TODO: make the html for the data received, update the existing issues html
         let jsonObj = data;
 

@@ -56,8 +56,7 @@ app.post('/hookie', function (req, res) {
     if(notification.xGithubEvent === 'issues') {
         io.emit('issue webhook', notification + '\n' + req.body);
     } else if (notification.xGithubEvent === 'issue_comment') {
-        io.emit('notification webhook', notification);
+        io.emit('comment webhook', notification);
     }
-    console.log(user);
 
 });
