@@ -70,7 +70,7 @@ app.post('/hookie', function (req, res) {
         };
 
         io.emit('issue webhook', notification);
-        io.emit('issue body', req.body);
+        io.emit('issue body', context);
     } else if (xGithubEvent === 'issue_comment') {
         io.emit('comment webhook', notification);
     }
