@@ -61,7 +61,7 @@ app.post('/hookie', function (req, res) {
         io.emit('comment webhook', notification);
     }
 
-    socket.on('received', function(data) {
+    io.on('received', function(data) {
         io.emit('issue body', req.body);
     });
 });
