@@ -39,8 +39,11 @@
 
         let text = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
                                             + 'Title: ' + notification.title + '<br/>'
-                                            + 'User: ' + notification.user + '<br/>'
-                                            + 'Text: ' + notification.text + '<br/>';
+                                            + 'User: ' + notification.user + '<br/>';
+
+        //In case of Comment notification, it includes the body text of the comment
+        if (typeOfAction === 'comment')
+            text += 'Text: ' + notification.text + '<br/>';
 
         let  li = document.createElement('li');
         li.innerHTML = text;

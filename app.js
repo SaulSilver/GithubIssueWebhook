@@ -50,7 +50,6 @@ app.post('/hookie', function (req, res) {
         action: req.body.action,
         user: req.body.issue.user.login,
         title: req.body.issue.title,
-        text: req.body.comment.body
     };
 
     //triggering off the client to update on receiving from Github
@@ -58,6 +57,7 @@ app.post('/hookie', function (req, res) {
     if(xGithubEvent === 'issues') {
         io.emit('issue webhook', notification + '\n' + req.body);
     } else if (xGithubEvent === 'issue_comment') {
+        notification.body = req.body.comment.body;
         io.emit('comment webhook', notification);
     }
 
