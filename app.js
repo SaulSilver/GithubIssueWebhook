@@ -46,7 +46,7 @@ app.post('/hookie', function (req, res) {
 
     //Check whether the changed is a comment or an issue
     let action = req.body.action;
-    let xGithubEvent = req.headers.x-github-event;
+    let xGithubEvent = req.headers['x-github-event'];
 
 
     console.log(xGithubEvent);
