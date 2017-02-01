@@ -40,6 +40,7 @@ function createNotification(notification, typeOfAction) {
 
 function renderIssues(issue) {
     console.log(issue);
+    let ul = document.getElementById('issues_ul');
     let li = document.getElementById(issue.id);
 
     console.log(issue.id);
