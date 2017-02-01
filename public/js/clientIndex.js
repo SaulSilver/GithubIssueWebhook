@@ -15,7 +15,6 @@ socket.on('issue webhook', function (data) {
 
 //Create the issue on the page
 socket.on('issue body', function(data) {
-    console.log(data);
     renderIssues(data);
 });
 
@@ -40,11 +39,10 @@ function createNotification(notification, typeOfAction) {
 }
 
 function renderIssues(issue) {
-    let ul = document.getElementById('issues_ul');
+    let li = document.getElementById(issue.issue.id);
+    console.log(issue.issue.id);
+    let context = 'Title: ' + issue.issue.title;
 
-    let context = 'Title: ' + issue.title;
-
-    let  li = document.createElement('li');
     li.innerHTML = context;
     ul.appendChild(li);
 }
