@@ -14,7 +14,7 @@
 
     socket.on('webhook', function (data) {
         //TODO: make the html for the data received, update the existing issues html
-        let jsonObj = data;
+        let jsonObj = data.headers;
         console.log(jsonObj);
     });
 </script>
