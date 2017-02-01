@@ -61,6 +61,7 @@ app.post('/hookie', function (req, res) {
     if(xGithubEvent === 'issues') {
 
         let context = {
+                    id: req.body.id,
                     title: req.body.title,
                     issueBody: req.body.body,
                     comments: req.body.comments,
