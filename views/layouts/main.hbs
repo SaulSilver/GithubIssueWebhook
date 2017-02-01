@@ -39,7 +39,7 @@
     function createNotification(notification, typeOfAction) {
         let ul = document.getElementById('notification_ul');
 
-        let text = document.createTextNode('Action: ' + notification.action + ' ' + typeOfAction + '\n'
+        let text = document.createTextNode('Action: ' + notification.action + ' ' + typeOfAction + '<br />'
                                             + 'Title: ' + notification.title + '<br>'
                                             + 'User: ' + notification.user + '<br>'
                                             + 'Text: ' + notification.text + '<br>');
