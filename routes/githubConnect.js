@@ -6,6 +6,8 @@
 
 const router = require('express').Router();
 const rp = require('request-promise');
+require('dotenv').config();
+
 
 router.route('/')
     .get(function (req, res) {
@@ -14,7 +16,7 @@ router.route('/')
             uri: 'https://api.github.com/repos/1dv523/hh222ix-examination-3/issues',
             headers: {
                 //TODO: add the secret to the environment variable
-                'Authorization': 'Basic dfb1fb9f413195e3f6f30c97b3251c0e6ea9b73d',
+                'Authorization': 'Basic ' + process.env.GITHUB_API_KEY,
                 'User-Agent': 'Github-Issues-Real-Time-app'
             },
             json: true
