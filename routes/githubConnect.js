@@ -8,7 +8,6 @@ const router = require('express').Router();
 const rp = require('request-promise');
 require('dotenv').config();
 
-
 router.route('/')
     .get(function (req, res) {
         let key = process.env.GITHUB_API_KEY;
