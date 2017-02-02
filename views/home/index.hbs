@@ -1,11 +1,11 @@
 <!-- Issues part -->
-<div>
+<div class="container">
     <h3>Issues</h3>
     {{#if issues }}
         <ul id="issues_ul">
             {{#each issues}}
                 <!--For each snippet in the array -->
-            <li id={{id}}> Title:     {{title}}       <br>
+            <li class="z-depth-4" id={{id}}> Title:     {{title}}       <br>
                 Body:       {{issueBody}}   <br>
                 Comments:   {{comments}}    <br>
                 URL:        {{issueUrl}}    <br>
@@ -20,7 +20,7 @@
 </div>
 
 <!-- Notifications part -->
-<div>
+<div class="container">
     <h3>Notifications</h3>
     <ul id="notification_ul">
 

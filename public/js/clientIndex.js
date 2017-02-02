@@ -1,5 +1,6 @@
 /**
  * Created by hatem on 2016-12-30.
+ * Client-side; has the socket to communicate with the server side and show info on the browser
  */
 "use strict";
 
@@ -25,10 +26,15 @@ socket.on('comment webhook', function (data) {
     createNotification(data, 'comment');
 });
 
-//Create the notification html
+/**
+ * Shows the notification
+ * @param notification
+ * @param typeOfAction
+ */
 function createNotification(notification, typeOfAction) {
     let ul = document.getElementById('notification_ul');
     let  li = document.createElement('li');
+    li.addClass("z-depth-4");
 
     li.innerHTML = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
         + 'Title: ' + notification.title + '<br/>'
@@ -37,6 +43,10 @@ function createNotification(notification, typeOfAction) {
     ul.appendChild(li);
 }
 
+/**
+ * Shows the updated issues
+ * @param issue
+ */
 function renderIssues(issue) {
     console.log(issue);
     let ul = document.getElementById('issues_ul');
@@ -50,5 +60,5 @@ function renderIssues(issue) {
         + 'Created at: ' + issue.created_at + '<br/>'
         + 'Updated at: ' + issue.updated_at + '<br/>';
 
-    ul.insertBefore(li, ul.firstElementChild);
+    ul.insertBefore(li, ul.firstElementChild);      //Insert the updated issue on the top of the list
 }

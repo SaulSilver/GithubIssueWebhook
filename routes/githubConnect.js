@@ -9,8 +9,8 @@ const rp = require('request-promise');
 
 router.route('/')
     .get(function (req, res) {
-        let key = process.env.GITHUB_API_KEY;
-        console.log(key);
+        //let key = process.env.GITHUB_API_KEY;
+        //console.log(key);
         let options = {
             uri: 'https://api.github.com/repos/1dv523/hh222ix-examination-3/issues',
             headers: {
