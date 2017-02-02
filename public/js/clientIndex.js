@@ -28,13 +28,12 @@ socket.on('comment webhook', function (data) {
 //Create the notification html
 function createNotification(notification, typeOfAction) {
     let ul = document.getElementById('notification_ul');
+    let  li = document.createElement('li');
 
-    let text = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
+    li.innerHTML = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
         + 'Title: ' + notification.title + '<br/>'
         + 'User: ' + notification.user + '<br/>';
 
-    let  li = document.createElement('li');
-    li.innerHTML = text;
     ul.appendChild(li);
 }
 
@@ -44,8 +43,12 @@ function renderIssues(issue) {
     let li = document.getElementById(issue.id);
 
     console.log(issue.id);
-    let context = 'Title: ' + issue.title;
+    li.innerHTML = 'Title: ' + issue.title  + '<br/>'
+        + 'Body: ' + issue.body  + '<br/>'
+        + 'Comments: ' + issue.comments + '<br/>'
+        + ' URL: ' + issue.url  + '<br/>'
+        + 'Created at: ' + issue.created_at + '<br/>'
+        + 'Updated at: ' + issue.updated_at + '<br/>';
 
-    li.innerHTML = context;
-    ul.appendChild(li);
+    ul.prependChild(li);
 }
