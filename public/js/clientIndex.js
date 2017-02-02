@@ -44,11 +44,11 @@ function renderIssues(issue) {
 
     console.log(issue.id);
     li.innerHTML = 'Title: ' + issue.title  + '<br/>'
-        + 'Body: ' + issue.body  + '<br/>'
+        + 'Body: ' + issue.issueBody  + '<br/>'
         + 'Comments: ' + issue.comments + '<br/>'
-        + ' URL: ' + issue.url  + '<br/>'
+        + ' URL: ' + issue.issueUrl  + '<br/>'
         + 'Created at: ' + issue.created_at + '<br/>'
         + 'Updated at: ' + issue.updated_at + '<br/>';
 
-    ul.prependChild(li);
+    ul.insertBefore(li, ul.firstElementChild);
 }
