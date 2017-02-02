@@ -11,12 +11,13 @@ require('dotenv').config();
 
 router.route('/')
     .get(function (req, res) {
-
+        let key = process.env.GITHUB_API_KEY;
+        console.log(key);
         let options = {
             uri: 'https://api.github.com/repos/1dv523/hh222ix-examination-3/issues',
             headers: {
                 //TODO: add the secret to the environment variable
-                'Authorization': 'Basic ' + process.env.GITHUB_API_KEY,
+                'Authorization': 'Basic ' + key,
                 'User-Agent': 'Github-Issues-Real-Time-app'
             },
             json: true
