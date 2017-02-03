@@ -1,5 +1,12 @@
-#main_div {
-    display: inline-block;
+.issue {
+    float: left;
+    width: 100px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.notification {
+    margin-left: 108px;
 }
 
 li {
