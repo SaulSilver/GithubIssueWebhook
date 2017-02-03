@@ -34,6 +34,7 @@ socket.on('comment webhook', function (data) {
 function createNotification(notification, typeOfAction) {
     let ul = document.getElementById('notification_ul');
     let  li = document.createElement('li');
+    li.setAttribute('class', 'card-panel');
 
     li.innerHTML = 'Action: ' + notification.action + ' ' + typeOfAction + '<br/>'
         + 'Title: ' + notification.title + '<br/>'
