@@ -41,13 +41,12 @@ let io = require('socket.io')(server);
 
 //Listening to webhooks
 app.post('/hookie', function (req, res) {
-    console.log('we are here');
+    //TODO: check if the webhook key is applicable
+
     res.status(200);
     res.send();
 
-    //TODO: Think about what kind of data is received (different possibilites)
-    //type, action, title, user for the notification
-
+    // action, title, user for the notification
     let xGithubEvent = req.headers['x-github-event'];
 
     let notification = {
@@ -60,6 +59,7 @@ app.post('/hookie', function (req, res) {
     //Check whether the changed is a comment or an issue
     if(xGithubEvent === 'issues') {
 
+        //Object to hold only the required info from the issue
         let context = {
                     id: req.body.issue.id,
                     title: req.body.issue.title,
