@@ -14,8 +14,3 @@
     flex-direction:column;
 }
 
-li {
-    list-style-position:inside;
-    border: 1px red;
-    margin: 0 0 10px 0;
-}
