@@ -3,6 +3,9 @@
  */
 "use strict";
 
+//For the environment variable
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 
@@ -10,6 +13,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const exphbs = require('express-handlebars');
+
+//Github webhook middleware
+const githubMiddleware = require('github-webhook-middleware')({
+    secret: process.env.HOOK_KEY        //Secret to check if the received hook is safe
+});
 
 const port = process.env.PORT || 8000;
 
@@ -40,9 +48,7 @@ let server = app.listen(port, () =>
 let io = require('socket.io')(server);
 
 //Listening to webhooks
-app.post('/hookie', function (req, res) {
-    //TODO: check if the webhook key is applicable
-
+app.post('/hookie', githubMiddleware, function (req, res) {
     res.status(200);
     res.send();
 
@@ -57,23 +63,22 @@ app.post('/hookie', function (req, res) {
 
     //triggering off the client to update on receiving from Github
     //Check whether the changed is a comment or an issue
-    if(xGithubEvent === 'issues') {
+    if (xGithubEvent === 'issues') {
 
         //Object to hold only the required info from the issue
         let context = {
-                    id: req.body.issue.id,
-                    title: req.body.issue.title,
-                    issueBody: req.body.issue.body,
-                    comments: req.body.issue.comments,
-                    issueUrl: req.body.issue.url,
-                    created_at: req.body.issue.created_at,
-                    updated_at: req.body.issue.updated_at
+            id: req.body.issue.id,
+            title: req.body.issue.title,
+            issueBody: req.body.issue.body,
+            comments: req.body.issue.comments,
+            issueUrl: req.body.issue.url,
+            created_at: req.body.issue.created_at,
+            updated_at: req.body.issue.updated_at
         };
-console.log(context);
+        console.log(context);
         io.emit('issue webhook', notification);
         io.emit('issue body', context);
     } else if (xGithubEvent === 'issue_comment') {
         io.emit('comment webhook', notification);
     }
-
 });

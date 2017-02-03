@@ -3,6 +3,8 @@
  * Connect to my Github repo and retrieves all the issues and extra features
  */
 "use strict";
+
+//For the environment variable
 require('dotenv').config();
 
 const router = require('express').Router();
@@ -16,7 +18,7 @@ router.route('/')
             uri: 'https://api.github.com/repos/1dv523/hh222ix-examination-3/issues',
             headers: {
                 //TODO: add the secret to the environment variable
-                'Authorization': 'Basic dfb1fb9f413195e3f6f30c97b3251c0e6ea9b73d',
+                'Authorization': 'Basic ' + key,
                 'User-Agent': 'Github-Issues-Real-Time-app'
             },
             json: true
