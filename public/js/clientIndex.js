@@ -8,10 +8,7 @@ let socket = io.connect();
 
 //Notification for issue
 socket.on('issue webhook', function (data) {
-    console.log('issue');
-    //TODO: make the html for the data received, update the existing issues html
     createNotification(data, 'issue');
-
 });
 
 //Create the issue on the page
@@ -21,8 +18,6 @@ socket.on('issue body', function(data) {
 
 //Notification for a comment
 socket.on('comment webhook', function (data) {
-    console.log('notification');
-    //TODO: make the html for the data received, update the existing issues html
     createNotification(data, 'comment');
 });
 
@@ -48,11 +43,9 @@ function createNotification(notification, typeOfAction) {
  * @param issue
  */
 function renderIssues(issue) {
-    console.log(issue);
     let ul = document.getElementById('issues_ul');
     let li = document.getElementById(issue.id);
 
-    console.log(issue.id);
     li.innerHTML = 'Title: ' + issue.title  + '<br/>'
         + 'Body: ' + issue.issueBody  + '<br/>'
         + 'Comments: ' + issue.comments + '<br/>'

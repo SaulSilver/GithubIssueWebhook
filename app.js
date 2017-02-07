@@ -53,8 +53,6 @@ app.post('/hookie', githubMiddleware, function (req, res) {
     res.send();
 
     // action, title, user for the notification
-    let xGithubEvent = req.headers['x-github-event'];
-
     let notification = {
         action: req.body.action,
         user: req.body.issue.user.login,
@@ -63,22 +61,28 @@ app.post('/hookie', githubMiddleware, function (req, res) {
 
     //triggering off the client to update on receiving from Github
     //Check whether the changed is a comment or an issue
-    if (xGithubEvent === 'issues') {
+    let xGithubEvent = req.headers['x-github-event'];
 
-        //Object to hold only the required info from the issue
-        let context = {
-            id: req.body.issue.id,
-            title: req.body.issue.title,
-            issueBody: req.body.issue.body,
-            comments: req.body.issue.comments,
-            issueUrl: req.body.issue.url,
-            created_at: req.body.issue.created_at,
-            updated_at: req.body.issue.updated_at
-        };
-        console.log(context);
-        io.emit('issue webhook', notification);
-        io.emit('issue body', context);
+    //Object to hold only the required info from the issue
+    let context = {
+        id: req.body.issue.id,
+        title: req.body.issue.title,
+        issueBody: req.body.issue.body,
+        comments: req.body.issue.comments,
+        issueUrl: req.body.issue.url,
+        created_at: req.body.issue.created_at,
+        updated_at: req.body.issue.updated_at
+    };
+
+    console.log(context);
+
+    if (xGithubEvent === 'issues') {
+        io.emit('issue webhook', notification);         //a message with for the notification
+        io.emit('issue body', context);         //a message with for the payload
+
     } else if (xGithubEvent === 'issue_comment') {
         io.emit('comment webhook', notification);
+        io.emit('issue body', context);         //a message with for the payload
+
     }
 });
