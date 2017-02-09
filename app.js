@@ -74,8 +74,6 @@ app.post('/hookie', githubMiddleware, function (req, res) {
         updated_at: req.body.issue.updated_at
     };
 
-    console.log(context);
-
     if (xGithubEvent === 'issues') {
         io.emit('issue webhook', notification);         //a message with for the notification
         io.emit('issue body', context);         //a message with for the payload
